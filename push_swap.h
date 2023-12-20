@@ -1,12 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 15:31:21 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/14 15:31:22 by anadal-g         ###   ########.fr       */
+/*   Created: 2023/12/15 15:12:25 by anadal-g          #+#    #+#             */
+/*   Updated: 2023/12/18 15:32:48 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <stdbool.h>
+# include <limits.h>
+# include "../libft/libft.h"
+
+typedef struct s_stack
+{
+	int				number;
+	int				index;
+	int				push_cost;
+	bool			median;
+	bool			cheapest;
+	struct s_stack	*target;
+	struct s_stack	*next;
+	struct s_stack	*prev;
+	
+}	t_stack;
+
+
+#endif
