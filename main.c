@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:12:02 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/20 15:22:32 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:47:12 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	ft_printf("rra\n");
+	printf("rra\n");
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	// else if (argc == 2)
-	// 	argv = ft_split(argv[1], ' ');//TODO nuevo split
-	// init_stack_a(&a, argv + 1);
-	// if (!stack_sorted(a))//TODO
-	// {
-	// 	if (stack_len(a) == 2)//TODO
-	// 		sa(&a, false);
-	// 	else if (stack_len(a) == 3)
-	// 		sort_three(&a);
-	// 	else
-	// 		sort_stacks(&a, &b);
-	// }
-	// free_stack(&a);
+	else if (argc == 2)
+		argv = ft_split(argv[1], ' ');//TODO nuevo split
+	init_stack_a(&a, argv + 1);
+	if (!stack_sorted(a))//TODO
+	{
+		if (stack_len(a) == 2)//TODO
+			sa(&a, false);
+		else if (stack_len(a) == 3)
+			sort_three(&a);
+		else
+			sort_stacks(&a, &b);
+	}
+	free_stack(&a);
 	return (0);
 }

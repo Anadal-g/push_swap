@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:12:25 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/18 15:32:48 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:41:40 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <stdbool.h>
 # include <limits.h>
-# include "../libft/libft.h"
+# include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_stack
 {

@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:28:09 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/20 15:54:53 by anadal-g         ###   ########.fr       */
+/*   Updated: 2023/12/21 19:37:05 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	pa(t_stack **a, t_stack **b, bool print)
 {
 	push(a, b);
 	if (!print)
-		ft_printf("pa\n");
+		printf("pa\n");
 }
 
 void	pb(t_stack **b, t_stack **a, bool print)
 {
 	push(b, a);
 	if (!print)
-		ft_printf("pb\n");
+		printf("pb\n");
 }
