@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:28:57 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/02 12:01:48 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/02 14:55:05 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	reverse_rotate(t_stack **stack)
 {
 	t_stack	*last_node;
-	
+
 	if (!*stack || !(*stack)->next)
 		return ;
 	last_node = find_last(*stack);
@@ -24,6 +24,7 @@ static void	reverse_rotate(t_stack **stack)
 	*stack = last_node;
 	last_node->next->prev = last_node;
 }
+
 void	rra(t_stack **a, bool print)
 {
 	reverse_rotate(a);

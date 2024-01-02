@@ -6,7 +6,7 @@
 #    By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 11:37:35 by anadal-g          #+#    #+#              #
-#    Updated: 2023/12/21 19:45:36 by anadal-g         ###   ########.fr        #
+#    Updated: 2024/01/02 15:10:49 by anadal-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,12 @@ SOURCES = \
 	reverse_rotate.c \
 	rotate.c \
 	ft_split.c \
+	utils.c \
 
 OBJS = $(SOURCES:%.c=%.o)
 CC = gcc -g -O3 -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror
-# LIBFT = Libft/libft.a
+LIBFT = Libft/libft.a
 
 #COLORS
 
@@ -55,7 +56,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-#	$(MAKE) -sC libft
+	$(MAKE) -sC libft
 #	@echo "$(MELOCOTON)Compiling the PUSH_SWAP program.$(CLEAR)"
 	@$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
 # @echo "$(VERDE)[OK]\n$(CLEAR)$(VERDE)Success!$(CLEAR)\n"
@@ -63,11 +64,11 @@ $(NAME) : $(OBJS)
 
 clean:
 	rm -f $(OBJS)
-##	@make clean -sC libft
+	@make clean -sC libft
 
 fclean: clean
 	rm -f $(NAME)
-#	@make fclean -sC libft
+	@make fclean -sC libft
 re: fclean all
 
 .PHONY: all clean fclean re
