@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:12:02 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/02 15:06:11 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:26:14 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	main(int argc, char **argv)
 	printf("rra\n");
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-// 	else if (argc == 2)
-// 		argv = ft_split(argv[1], ' ');//TODO nuevo split
-// 	init_stack_a(&a, argv + 1);
+	else if (argc == 2)
+		argv = ft_split(argv[1], ' ');
+	init_stack_a(&a, argv + 1);
 // 	if (!stack_sorted(a))//TODO
 // 	{
 // 		if (stack_len(a) == 2)//TODO

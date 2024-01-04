@@ -6,7 +6,7 @@
 #    By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 11:37:35 by anadal-g          #+#    #+#              #
-#    Updated: 2024/01/02 15:10:49 by anadal-g         ###   ########.fr        #
+#    Updated: 2024/01/04 12:01:38 by anadal-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ SOURCES = \
 	rotate.c \
 	ft_split.c \
 	utils.c \
+	errors.c \
+	stack_init.c \
 
 OBJS = $(SOURCES:%.c=%.o)
 CC = gcc -g -O3 -fsanitize=address

@@ -6,13 +6,13 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:20:51 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/02 17:26:50 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/04 12:01:05 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static longft_atol(const char *s)
+static long	ft_atol(const char *s)
 {
 	long	result;
 	int		sign;
@@ -33,6 +33,30 @@ static longft_atol(const char *s)
 	return (result * sign);
 }
 
+static void	append_node(t_stack **stack, int n)
+{
+	t_stack	*node;
+	t_stack	*last_node;
+
+	if (!stack)
+		return ;
+	node = malloc(sizeof(t_stack));
+	if (!node)
+		return ;
+	node->next = NULL;
+	node->number = n;
+	if (!(*stack))
+	{
+		*stack = node;
+		node->prev = NULL;
+	}
+	else
+	{
+		last_node = find_last(*stack);
+		last_node->next = node;
+		node->prev = last_node;
+	}
+}
 
 void	init_stack_a(t_stack **a, char **argv)
 {
