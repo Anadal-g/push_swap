@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:58:59 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/04 12:26:33 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/10 12:18:41 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,30 @@ int duplicate (t_stack *a, int n)
         a = a->next;
     }
     return (0);
+}
+
+
+void    free_stack(t_stack **stack)
+{
+    t_stack	*tmp;
+	t_stack	*current;
+
+	if (!stack)
+		return ;
+	current = *stack;
+	while (current)
+	{
+		tmp = current->next;
+		current->number = 0; 
+		current = tmp;
+    }
+    *stack = NULL;
+    
+}
+
+void	free_error(t_stack **a)
+{
+	free_stack(a);
+	printf("Error\n");
+	exit(1);
 }

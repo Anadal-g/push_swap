@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:28:09 by anadal-g          #+#    #+#             */
-/*   Updated: 2023/12/21 19:37:05 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:19:09 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static void	push(t_stack **dest, t_stack **source)
 	*source = (*source)->next;
 	if (*source)
 		(*source)->prev = NULL;
-	if (!*dest)
+	if (!*dest)	
 	{
 		*dest = push_node;
 		push_node->next = NULL;
-	}
+	} 
 	else
 	{
 		push_node->next = *dest;

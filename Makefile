@@ -6,7 +6,7 @@
 #    By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 11:37:35 by anadal-g          #+#    #+#              #
-#    Updated: 2024/01/04 12:01:38 by anadal-g         ###   ########.fr        #
+#    Updated: 2024/01/10 12:21:46 by anadal-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,15 @@ SOURCES = \
 	swap.c \
 	reverse_rotate.c \
 	rotate.c \
-	ft_split.c \
 	utils.c \
 	errors.c \
 	stack_init.c \
+	stack_sorted.c \
 
 OBJS = $(SOURCES:%.c=%.o)
 CC = gcc -g -O3 -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror
-LIBFT = Libft/libft.a
+LIBFT = libft/libft.a
 
 #COLORS
 
@@ -58,7 +58,7 @@ LIBFT = Libft/libft.a
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(MAKE) -sC libft
+	@make -sC libft
 #	@echo "$(MELOCOTON)Compiling the PUSH_SWAP program.$(CLEAR)"
 	@$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -o $(NAME)
 # @echo "$(VERDE)[OK]\n$(CLEAR)$(VERDE)Success!$(CLEAR)\n"

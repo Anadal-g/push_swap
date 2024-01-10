@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   stack_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/15 15:12:02 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/10 12:21:09 by anadal-g         ###   ########.fr       */
+/*   Created: 2024/01/10 11:50:07 by anadal-g          #+#    #+#             */
+/*   Updated: 2024/01/10 11:53:02 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+bool	stack_sorted(t_stack *stack)
 {
-	t_stack	*a;
-	t_stack	*b;
-
-	a = NULL;
-	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (!stack)
 		return (1);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	init_stack_a(&a, argv + 1);
-	if (!stack_sorted(a))
+	while (stack->next)
 	{
-		if (stack_len(a) == 2)
-			sa(&a, false);
-		else if (stack_len(a) == 3)
- 			sort_three(&a);
-// 		else
-// 			sort_stacks(&a, &b);
+		if(stack->number > stack->next->number)
+			return (false);
+		stack = stack->next;
 	}
-	free_stack(&a);
-	return (0);
+	return (true);
 }
