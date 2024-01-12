@@ -6,14 +6,13 @@
 #    By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/28 11:37:35 by anadal-g          #+#    #+#              #
-#    Updated: 2024/01/10 12:21:46 by anadal-g         ###   ########.fr        #
+#    Updated: 2024/01/11 16:31:16 by anadal-g         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 SOURCES = \
 	main.c \
-	push_swap.c \
 	push.c \
 	swap.c \
 	reverse_rotate.c \
@@ -22,6 +21,8 @@ SOURCES = \
 	errors.c \
 	stack_init.c \
 	stack_sorted.c \
+	sort_stacks.c \
+	init_a.c \
 
 OBJS = $(SOURCES:%.c=%.o)
 CC = gcc -g -O3 -fsanitize=address

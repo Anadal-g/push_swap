@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 11:50:07 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/10 11:53:02 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:22:36 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	stack_sorted(t_stack *stack)
 		return (1);
 	while (stack->next)
 	{
-		if(stack->number > stack->next->number)
+		if (stack->number > stack->next->number)
 			return (false);
 		stack = stack->next;
 	}

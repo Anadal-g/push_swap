@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:07:18 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/10 12:16:53 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:21:08 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ t_stack	*find_last(t_stack *stack)
 void	sort_three(t_stack **a)
 {
 	t_stack	*biggest_node;
-	
+
 	biggest_node = find_max(*a);
-	if(biggest_node == *a)
+	if (biggest_node == *a)
 		ra(a, false);
-	else if((*a)->next == biggest_node)
+	else if ((*a)->next == biggest_node)
 		rra(a, false);
 	if ((*a)->number > (*a)->next->number)
 		sa(a, false);
@@ -38,7 +38,7 @@ int	stack_len(t_stack *stack)
 {
 	int	count;
 
-	if (!stack) 
+	if (!stack)
 		return (0);
 	count = 0;
 	while (stack)
@@ -48,9 +48,10 @@ int	stack_len(t_stack *stack)
 	}
 	return (count);
 }
+
 t_stack	*find_max(t_stack *stack)
 {
-	long			max;
+	long	max;
 	t_stack	*max_node;
 
 	if (!stack)
@@ -64,7 +65,6 @@ t_stack	*find_max(t_stack *stack)
 			max_node = stack;
 		}
 		stack = stack->next;
-		
 	}
 	return (max_node);
 }

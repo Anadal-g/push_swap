@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:12:02 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/01/10 12:21:09 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/01/11 16:23:33 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	main(int argc, char **argv)
 		if (stack_len(a) == 2)
 			sa(&a, false);
 		else if (stack_len(a) == 3)
- 			sort_three(&a);
-// 		else
-// 			sort_stacks(&a, &b);
+			sort_three(&a);
+		else
+			sort_stacks(&a, &b);
 	}
 	free_stack(&a);
 	return (0);
