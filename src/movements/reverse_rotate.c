@@ -6,31 +6,39 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:28:57 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/02/13 14:58:30 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:28:25 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-
-static void	reverse_rotate(t_stack **stack)
+void reverse_rotate(t_stack **stack)
 {
-	t_stack	*last_node;
+    t_stack *last_node;
+    t_stack *before_last;
 
-	if (!*stack || !(*stack)->next)
-		return ;
-	last_node = find_last(*stack);
-	last_node->prev->next = NULL;
-	last_node->prev = NULL;
-	*stack = last_node;
-	last_node->next->prev = last_node;
+    if (!stack || !(*stack) || !(*stack)->next)
+        return;
+    last_node = *stack;
+    while (last_node->next)
+    {
+        before_last = last_node;
+        last_node = last_node->next;
+	}
+    before_last->next = NULL;
+    last_node->prev = NULL;
+    last_node->next = *stack;
+    (*stack)->prev = last_node;
+    *stack = last_node;
 }
+
 
 void	rra(t_stack **a, bool print)
 {
 	reverse_rotate(a);
 	if (!print)
 		printf("rra\n");
+    update_indices(*a);
 }
 
 void	rrb(t_stack **b, bool print)

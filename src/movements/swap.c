@@ -6,14 +6,13 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:29:01 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/02/13 14:58:44 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:31:46 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-
-static void	swap(t_stack **head)
+void	swap(t_stack **head)
 {
 	if (!*head || !(*head)->next)
 		return ;
