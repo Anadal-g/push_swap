@@ -26,7 +26,7 @@ To clone and run this project, just follow this instructions
 
  Clone this repository
  
-`$ git clone https://github.com/maricard18/42-push_swap`
+`$ git clone https://github.com/anadal-g/push_swap`
 
  Go into the repository
 
