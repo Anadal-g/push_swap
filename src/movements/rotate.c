@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:28:59 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/11/19 11:28:19 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:05:16 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ra(t_stack **a, bool print)
 	rotate(a);
 	if (!print)
 		printf("ra\n");
-	update_indices(*a);
 }
 
 void	rb(t_stack **b, bool print)

@@ -6,107 +6,32 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:32:57 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/11/19 12:59:31 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/11/20 18:31:05 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void print_stack(t_stack *stack)
+void	stack_above_half(t_stack *stack)
 {
-    if (!stack)
-    {
-        printf("La pila está vacía.\n");
-        return;
-    }
+	int	half;
+	int	median;
+	int	i;
 
-    printf("Estado de la pila:\n");
-    printf("Index\tNumber\n");
-
-    while (stack)
-    {
-        printf("%d\t%d\n", stack->index, stack->number);
-        stack = stack->next;
-    }
-    printf("-----------------------\n");
-}
-
-void update_indices(t_stack *stack)
-{
-    int index = 0;
-    
-    while (stack)
-    {
-        stack->index = index;
-        stack = stack->next;
-        index++;
-    }
-}
-
-// Establece el nodo objetivo en la pila 'b' para cada nodo de la pila 'a'
-void stack_set_target_a(t_stack *main_stack, t_stack *stack_b)
-{
-    t_stack *target_stack;
-    long target_num;
-
-    target_num = LONG_MIN;
-    target_stack = stack_b;
-    while (target_stack)
-    {
-        if (target_stack->number < main_stack->number && target_stack->number > target_num)
-        {
-            target_num = target_stack->number;
-            main_stack->target = target_stack;
-        }
-        target_stack = target_stack->next;
-    }
-    if (target_num == LONG_MIN)
-        main_stack->target = find_max(stack_b);
-}
-//define el costo
-void stack_set_push_cost(t_stack *a, t_stack *b, t_stack *node_a, int *count)
-{
-    int less_half;
-
-    stack_set_target_a(node_a, b);
-    less_half = stack_len(b) - node_a->target->id;
-    if (node_a->above_median)
-        *count = node_a->id;
-    else
-        *count = stack_len(a) - node_a->id;
-    if (node_a->above_median && node_a->target->above_median)
-    {
-        if (node_a->target->id > *count)
-            *count += (node_a->target->id - *count);
-    }
-    else if (!node_a->above_median && !node_a->target->above_median)
-    {
-        if (*count < less_half)
-            *count += (less_half - *count);
-    }
-    else if (node_a->target->above_median)
-        *count += node_a->target->id;
-    else
-        *count += less_half;
-}
-
-t_stack *find_min(t_stack *stack)
-{
-    long min_value;
-    t_stack *min_node;
-	
-	min_value = LONG_MAX;
-	min_node = NULL;
-    while (stack)
-    {
-        if (stack->number < min_value)
-        {
-            min_value = stack->number;
-            min_node = stack;
-        }
-        stack = stack->next;
-    }
-    return min_node;
+	i = 1;
+	half = stack_len(stack);
+	median = half / 2;
+	if (half % 2)
+		median++;
+	while (stack)
+	{
+		stack->id = i++;
+		if (stack->id <= median)
+			stack->median = false;
+		else
+			stack->median = false;
+		stack = stack->next;
+	}
 }
 
 // Ejecuta movimientos para colocar el nodo "cheapest" en la posicion correcta en 'a'
@@ -115,52 +40,30 @@ void execute_moves(t_stack **a, t_stack **b, t_stack *cheapest)
     while (*b != cheapest)
     {
         if (cheapest->index <= stack_len(*b) / 2)
-            rb(b, true);
+            rb(b, false);
         else
-            rrb(b, true);
+            rrb(b, false);
     }
     stack_set_target_a(cheapest, *a);
     while (*a != cheapest->target)
     {
         if (cheapest->target->index <= stack_len(*a) / 2)
-            ra(a, true);
+            ra(a, false);
         else
-            rra(a, true);
+            rra(a, false);
     }
     if (cheapest->index <= stack_len(*b) / 2 && cheapest->target->index <= stack_len(*a) / 2)
     {
         while (*b != cheapest && *a != cheapest->target)
-            rr(a, b, true);
+            rr(a, b, false);
     }
     else if (cheapest->index > stack_len(*b) / 2 && cheapest->target->index > stack_len(*a) / 2)
     {
         while (*b != cheapest && *a != cheapest->target)
-            rrr(a, b, true);
+            rrr(a, b, false);
     }
 }
 
-t_stack *find_cheapest_move(t_stack *a, t_stack *b)
-{
-    t_stack *current;
-    t_stack *cheapest;
-    int min_cost;
-    int current_cost;
-
-    min_cost = INT_MAX;
-    cheapest = NULL;
-    current = b;
-    while (current)
-    {
-        stack_set_push_cost(a, b, current, &current_cost);
-        if (current_cost < min_cost)
-        {
-            min_cost = current_cost;
-            cheapest = current;
-        }
-        current = current->next;
-    }
-    return (cheapest);
-}
 
 void sort_end(t_stack **stack_a)
 {
@@ -170,107 +73,69 @@ void sort_end(t_stack **stack_a)
     while (*stack_a != min_node)
     {
         if (min_node->index <= stack_len(*stack_a) / 2)
-            ra(stack_a, true);
+            ra(stack_a, false);
         else
-            rra(stack_a, true);
-        update_indices(*stack_a);
+            rra(stack_a, false);
     }
 }
-int find_median(t_stack *stack)
-{
-    int len = stack_len(stack);
-    int *values = malloc(sizeof(int) * len);
-    t_stack *current = stack;
 
-    if (!values)
-    {
-        perror("Error en la asignación de memoria");
-        exit(EXIT_FAILURE);
-    }
-    int i = 0;
-    while (i < len)
-    {
-        values[i] = current->number;
-        current = current->next;
-        i++;
-    }
-    int j;
-    i = 0;
-    while (i < len - 1)
-    {
-        j = i + 1;
-        while (j < len)
-        {
-            if (values[i] > values[j])
-            {
-                int temp = values[i];
-                values[i] = values[j];
-                values[j] = temp;
-            }
-            j++;
-        }
-        i++;
-    }
-    int median = values[len / 2];
-    free(values);
-    return median;
-}
 void sort_push_a(t_stack **stack_a, t_stack **stack_b)
 {
-    t_stack *cheapest_node;
+    int len_stack_b;
+    t_stack *target_b;
 
-    while (*stack_b)
+    len_stack_b = stack_len(*stack_b);
+    while (len_stack_b-- > 0)
     {
-        cheapest_node = find_cheapest_move(*stack_a, *stack_b);
-        if (!cheapest_node)
+        stack_above_half(*stack_a);
+        stack_above_half(*stack_b);
+        target_b = stack_set_target_b(*stack_b, *stack_a);
+        while (*stack_a != target_b)
         {
-            printf("Error: No se pudo encontrar el nodo más barato.\n");
-            break;
+            if (target_b->median)
+                ra(stack_a, stack_b);
+            else
+                rra(stack_a, stack_b);
         }
-        execute_moves(stack_a, stack_b, cheapest_node);
-        pa(stack_a, stack_b, true);
-        printf("pa - Nodo %d movido de B a A\n", (*stack_a)->number);
-        update_indices(*stack_a);
-        update_indices(*stack_b);
+        pa(stack_a, stack_b, false);
     }
 }
 
-
-void sort_push_b(t_stack **stack_a, t_stack **stack_b)
+void	sort_push_b(t_stack **stack_a, t_stack **stack_b)
 {
-    int median;
-    int len;
-    int pushed = 0;
+	t_stack	*min_cost;
+	int		len_stack_a;
 
-    len = stack_len(*stack_a);
-    median = find_median(*stack_a);
-
-    while (pushed < len)
-    {
-        if ((*stack_a)->number < median)
+	len_stack_a = stack_len(*stack_a);
+	while (len_stack_a-- > 3 && !stack_sorted(*stack_a))
+	{
+		stack_above_half(*stack_a);
+		stack_above_half(*stack_b);
+		min_cost = stack_set_min_cost(stack_a, stack_b);
+        if (!min_cost)
         {
-            pb(stack_b, stack_a, true);
-            printf("pb - Nodo %d movido a la pila B\n", (*stack_b)->number);
-            pushed++;
+            printf("Error: min_cost es NULL en sort_push_b. No se pudo encontrar un nodo con costo mínimo.\n");
+            return;
         }
-        else
-        {
-            ra(stack_a, true);
-            printf("ra - Nodo %d movido al final de la pila A\n", (*stack_a)->number);
-            pushed++;
-        }
-        update_indices(*stack_a);
-        update_indices(*stack_b);
-    }
+		stack_set_top_node(stack_a, stack_b, min_cost);
+		pb(stack_a, stack_b, false);
+	}
 }
 
 void sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
-    print_stack(*stack_a);
+    int len_stack_a;
+
+    len_stack_a = stack_len(*stack_a);
+    if (len_stack_a-- > 3 && !stack_sorted(*stack_a))
+        pb(stack_a, stack_b, false);
+    if (len_stack_a-- > 3 && !stack_sorted(*stack_a))
+        pb(stack_a, stack_b, false);
     sort_push_b(stack_a, stack_b);
     sort_three(stack_a);
     sort_push_a(stack_a, stack_b);
+    stack_above_half(*stack_a);
     sort_end(stack_a);
-    print_stack(*stack_a);
 }
+
 

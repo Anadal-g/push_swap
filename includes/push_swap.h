@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:12:25 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/11/19 11:29:21 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:11:25 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_stack
 	int				number;
 	int				index;
 	int				push_cost;
-	bool			above_median;
+	bool			median;
 	bool			cheapest;
 	struct s_stack	*target;
 	struct s_stack	*next;
@@ -58,7 +58,9 @@ void	sort_three(t_stack **a);
 int		stack_len(t_stack *stack);
 t_stack	*find_max(t_stack *stack);
 void	free_list(t_stack **stack);
-void ft_putstr_fd(char *s, int fd);
+void 	ft_putstr_fd(char *s, int fd);
+t_stack *find_min(t_stack *stack);
+
 //Error
 int		duplicate(t_stack *a, int n);
 int		error_syntax(char *str);
@@ -71,7 +73,15 @@ t_stack	*new_node(int id, long num);
 
 
 //stack_init
-t_stack *init_stack_a(char **argv, int argc);
+t_stack 	*init_stack_a(char **argv, int argc);
+void 		stack_set_target_a(t_stack *main_stack, t_stack *stack_b);
+t_stack		*stack_set_target_b(t_stack *node, t_stack *stack_a);
+t_stack		*stack_set_min_cost(t_stack **stack_a, t_stack **stack_b);
+void		stack_set_top_node(t_stack **stack_a, t_stack **stack_b, t_stack *min_cost);
+void	stack_set_push_cost(t_stack *stack_a, t_stack *stack_b, t_stack *node_a, int *count);
+
+
+
 
 //stack_sorted
 bool	stack_sorted(t_stack *stack);

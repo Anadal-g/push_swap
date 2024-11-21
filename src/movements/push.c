@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 15:28:09 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/11/19 11:41:06 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:05:08 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,4 @@ void	pb(t_stack **b, t_stack **a, bool print)
 	push(b, a);
 	if (!print)
 		printf("pb\n");
-	update_indices(*a);
-    update_indices(*b);
 }

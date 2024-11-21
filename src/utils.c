@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:07:18 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/11/18 16:43:15 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:54:40 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,39 @@ int	stack_len(t_stack *stack)
 
 t_stack	*find_max(t_stack *stack)
 {
-	long	max;
-	t_stack	*max_node;
+	t_stack	*max;
+	long	num_max;
 
-	if (!stack)
-		return (NULL);
-	max = LONG_MIN;
+	max = NULL;
+	num_max = INT_MIN;
 	while (stack)
 	{
-		if (stack->number > max)
+		if (stack->number > num_max)
 		{
-			max = stack->number;
-			max_node = stack;
+			max = stack;
+			num_max = stack->number;
 		}
 		stack = stack->next;
 	}
-	return (max_node);
+	return (max);
+}
+
+
+t_stack	*find_min(t_stack *stack)
+{
+	t_stack	*min;
+	long	num_min;
+
+	min = NULL;
+	num_min = INT_MAX;
+	while (stack)
+	{
+		if (stack->number < num_min)
+		{
+			min = stack;
+			num_min = stack->number;
+		}
+		stack = stack->next;
+	}
+	return (min);
 }

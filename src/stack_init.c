@@ -6,7 +6,7 @@
 /*   By: anadal-g <anadal-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:20:51 by anadal-g          #+#    #+#             */
-/*   Updated: 2024/11/18 16:39:57 by anadal-g         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:34:22 by anadal-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,53 +32,6 @@ long	ft_atol(const char *s)
 		result = result * 10 + (*s++ - '0');
 	return (result * sign);
 }
-
-// static void	append_node(t_stack **stack, int n)
-// {
-// 	t_stack	*node;
-// 	t_stack	*last_node;
-
-// 	if (!stack)
-// 		return ;
-// 	node = malloc(sizeof(t_stack));
-// 	if (!node)
-// 		return ;
-// 	node->next = NULL;
-// 	node->number = n;
-// 	if (!(*stack))
-// 	{
-// 		*stack = node;
-// 		node->prev = NULL;
-// 	}
-// 	else
-// 	{
-// 		last_node = find_last(*stack);
-// 		last_node->next = node;
-// 		node->prev = last_node;
-// 	}
-// }
-
-// t_stack	init_stack_a(char **a, char **argv)
-// {
-// 	long	n;
-// 	int		i;
-
-// 	i = 0;
-// 	while (argv[i])
-// 	{
-// 		if (error_syntax(argv[i]))
-// 			// printf("Error argumento invalido\n");
-// 			// exit(1);
-// 			free_error(a);
-// 		n = ft_atol(argv[i]);
-// 		if (duplicate(*a, (int)n))
-// 			// printf("Error numero duplicado\n");
-// 			// exit(1);
-// 			free_error(a);
-// 		append_node(a, (int)n);
-// 		i++;
-// 	}
-// }
 
 t_stack *init_stack_a(char **argv, int argc)
 {
